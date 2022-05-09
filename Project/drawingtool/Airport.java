@@ -1,28 +1,32 @@
 package drawingtool;
 
-public class Airport {
+import java.util.ArrayList;
+
+public class Airport  {
 	
 	private int width,height;
 	private TerminalBuilding terminalBuilding;
 	private ATCTower tower;
 	private Sky sky;
 	private Runway runway;
-	private Plane plane;
+	private ArrayList<Plane> planes;
 	
 	public Airport() {
-		plane = new Plane(375, 35);
+		planes = new ArrayList<Plane>();
+		Plane plane1 = new Plane(375,35);
+		Plane plane2 = new Plane(375/2, 35/2);
+		plane2.getFuselage().setWindowSeparation(4);
+		
+		planes.add(plane1);
+		planes.add(plane2);
 	}
 	
-
-	public Airport(int width, int height) {
-		super();
-		this.width = width;
-		this.height = height;
-		plane = new Plane(375, 35);
-	}
-	
-	public void drawAt(int left, int bottom) {
-		plane.drawAt(left, bottom);
+	public void draw() {
+		planes.get(0).drawAt(100, 500);
+		for(int i= 1; i<planes.size(); i++) {
+			planes.get(i).drawAt(1000, 500);
+		}
+		
 	}
 
 }

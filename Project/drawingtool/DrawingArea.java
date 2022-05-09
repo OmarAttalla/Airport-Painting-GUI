@@ -1,6 +1,6 @@
 package drawingtool;
 
-import java.awt.Color;
+
 /**
  * Provides a panel which can be used for drawing.
  * 
@@ -11,11 +11,12 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
-
 import javax.swing.JPanel;
 
 public class DrawingArea extends JPanel {
 	private static final long serialVersionUID = 1L;
+	
+	private Airport airport = null;
 	
 	protected void paintComponent(Graphics g) {
 		Graphics2D pen = (Graphics2D) g;
@@ -27,11 +28,13 @@ public class DrawingArea extends JPanel {
 		RenderingHints.KEY_ANTIALIASING,
 		RenderingHints.VALUE_ANTIALIAS_ON);
 		pen.setRenderingHints(rh);
-		
-		Airport airport= new Airport(375, 35);
-		airport.drawAt(200,200);
-		
-		
+
+		if(airport!=null) {
+			airport.draw();
+		} else {
+			airport= new Airport();
+			airport.draw();
+		}
 		
 	}
 } 
