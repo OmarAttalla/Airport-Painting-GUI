@@ -1,13 +1,29 @@
 package drawingtool;
 
-public class RoundRectangularObject {
-	private int width, height, vDiameter, hDiameter;
+import java.awt.Point;
 
-	public RoundRectangularObject(int width, int height, int vDiameter, int hDiameter) {
+public class RoundRectangularObject {
+	private int width, height, vDiameter, hDiameter, left, top;
+	private Point address;
+
+	public RoundRectangularObject(int width, int height, int vDiameter, int hDiameter, int left, int top) {
 		this.width = width;
 		this.height = height;
 		this.vDiameter = vDiameter;
 		this.hDiameter = hDiameter;
+		
+		this.left = left;
+		this.top = top;
+		
+		address = new Point (left, top);
+	}
+	
+	public Point getAddress() {
+		return address;
+	}
+	
+	public void setAddress( Point newAddress) {
+		address = newAddress;
 	}
 	
 	public int getWidth() {
@@ -42,7 +58,7 @@ public class RoundRectangularObject {
 		this.hDiameter = hDiameter;
 	}
 
-	public void drawAt(int left, int top) {
+	public void draw() {
 		Drawing.pen().drawRoundRect(left, top, width, height, hDiameter, vDiameter);
 	}
 }

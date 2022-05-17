@@ -22,7 +22,6 @@ public class Engine {
 	}
 
 	public Point getBezier(Point point, Point relativeZero, double calcScaling) {
-		// 2.5/14
 		int bezierX = (int) (calcScaling * (point.x - relativeZero.x));
 		int bezierY = (int) (calcScaling * (point.y - relativeZero.y));
 		Point bezier = new Point(Math.abs(bezierX), Math.abs(bezierY));
@@ -33,18 +32,19 @@ public class Engine {
 	public void drawAt(int left, int top) {
 		int xEndPoint, yEndPoint ;
 		int scaling = 2;
+		
 		//For bottom curve
 		Point relativeZero = new Point(100,50);
 		Point firstBezierPoint = getBezier(new Point(96,49), relativeZero, scaling);
 		Point secondBezierPoint = getBezier(new Point(90,49), relativeZero, scaling);
 		Point endPoint = getBezier(new Point(80,51), relativeZero, scaling);
+		
 		//For top curve
 		Point relativeZeroT = new Point(80,66);
 		Point firstBezierPointT = getBezier(new Point(90,64), relativeZeroT, scaling);
 		Point secondBezierPointT = getBezier(new Point(96,64), relativeZeroT, scaling);
 		
 		Path2D.Double engine = new Path2D.Double();
-
 		engine.moveTo(left, top);
 		
 		//FrontPart

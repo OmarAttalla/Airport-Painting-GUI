@@ -2,7 +2,7 @@ package drawingtool;
 
 public class LandingGear {
 	private int diameter;
-
+	
 	public LandingGear(int diameter) {
 		this.diameter = diameter;
 	}

@@ -8,74 +8,92 @@ public class Fuselage {
 
 	private int width, height;
 	private int mainDoorWidth, mainDoorHeight, emergencyDoorWidth, emergencyDoorHeight, windowWidth, windowHeight,
-			numWindows, mainDoorsY, emergencyDoorsY, windowsY, windowStartPos, windowSeparation;
+			numWindows, mainDoorsY, emergencyDoorsY, windowsY, windowStartPos, windowSeparation, pWindowArea;
 	private Color color;
 	private Door leftMainDoor, rightMainDoor, leftEmergencyDoor, rightEmergencyDoor;
-	private ArrayList<PassengerWindow> passengerWindow;
-	private CockpitWindow cockpitWindows;
+	private ArrayList<PassengerWindow> passengerWindow; // Composite
+	private CockpitWindow cockpitWindow; // Composite
 
-	public Fuselage(int width, int height) {
+	public Fuselage(int width, int height, int left, int top) {
 
 		this.width = width;
 		this.height = height;
 		color = Color.white;
 
-		passengerWindow = new ArrayList<PassengerWindow>();
-		PassengerWindow pWindow;
-
+		// Doors
 		mainDoorWidth = (int) (width / 30);
 		mainDoorHeight = (int) (height / 1.46);
 		emergencyDoorWidth = (int) (width / 42.85);
 		emergencyDoorHeight = (int) (height / 2.5);
 
+		leftMainDoor = new Door(mainDoorWidth, mainDoorHeight, (int) (width / 37.5), (int) (height / 5),
+				(int) (left + width / 5.69), (int) (top + height / 3.228));
+		rightMainDoor = new Door(mainDoorWidth, mainDoorHeight, (int) (width / 37.5), (int) (height / 5),
+				(int) (left + width / 1.043), (int) (top + height / 3.228));
+		leftEmergencyDoor = new Door(emergencyDoorWidth, emergencyDoorHeight, (int) (width / 75),
+				(int) (height / 11.67), (int) (left + width / 1.823), (int) (top + height / 2.098));
+		rightEmergencyDoor = new Door(emergencyDoorWidth, emergencyDoorHeight, (int) (width / 75),
+				(int) (height / 11.67), (int) (left + width / 1.752), (int) (top + height / 2.098));
+
+		// Windows
+		passengerWindow = new ArrayList<PassengerWindow>();
+		PassengerWindow pWindow;
+
+		pWindowArea = (int) (width / 1.369);
 		numWindows = 35;
 		windowWidth = width / 75;
 		windowHeight = height / 5;
-
-		leftMainDoor = new Door(mainDoorWidth, mainDoorHeight, (int) (width / 37.5), (int) (height / 5));
-		rightMainDoor = new Door(mainDoorWidth, mainDoorHeight, (int) (width / 37.5), (int) (height / 5));
-		leftEmergencyDoor = new Door(emergencyDoorWidth, emergencyDoorHeight, (int) (width / 75),
-				(int) (height / 11.67));
-		rightEmergencyDoor = new Door(emergencyDoorWidth, emergencyDoorHeight, (int) (width / 75),
-				(int) (height / 11.67));
+		windowSeparation = (int) Math
+				.ceil((windowWidth + (pWindowArea - (numWindows * windowWidth)) / numWindows * 1.5));
 
 		for (int i = 0; i < numWindows; i++) {
-			pWindow = new PassengerWindow(windowWidth, windowHeight, (int) (height / 8.75), (int) (height / 8.75));
+			windowStartPos = (int) (left + width / 4.704);
+
+			pWindow = new PassengerWindow(windowWidth, windowHeight, (int) (height / 8.75), (int) (height / 8.75),
+					windowStartPos + (i * windowSeparation), (int) (top + height / 2.0125));
 			passengerWindow.add(pWindow);
+
 		}
 	}
 
-	public Fuselage(int width, int height, Color color) {
+	public Fuselage(int width, int height, int left, int top, Color color) {
 
 		this.width = width;
 		this.height = height;
 		this.color = color;
 
-		passengerWindow = new ArrayList<PassengerWindow>();
-		PassengerWindow pWindow;
-
+		// Doors
 		mainDoorWidth = (int) (width / 30);
 		mainDoorHeight = (int) (height / 1.46);
 		emergencyDoorWidth = (int) (width / 42.85);
 		emergencyDoorHeight = (int) (height / 2.5);
 
+		leftMainDoor = new Door(mainDoorWidth, mainDoorHeight, (int) (width / 37.5), (int) (height / 5),
+				(int) (left + width / 5.69), (int) (top + height / 3.228));
+		rightMainDoor = new Door(mainDoorWidth, mainDoorHeight, (int) (width / 37.5), (int) (height / 5),
+				(int) (left + width / 1.043), (int) (top + height / 3.228));
+		leftEmergencyDoor = new Door(emergencyDoorWidth, emergencyDoorHeight, (int) (width / 75),
+				(int) (height / 11.67), (int) (left + width / 1.823), (int) (top + height / 2.098));
+		rightEmergencyDoor = new Door(emergencyDoorWidth, emergencyDoorHeight, (int) (width / 75),
+				(int) (height / 11.67), (int) (left + width / 1.752), (int) (top + height / 2.098));
+
+		// Windows
+		passengerWindow = new ArrayList<PassengerWindow>();
+		PassengerWindow pWindow;
+
+		pWindowArea = (int) (width / 1.369);
 		numWindows = 35;
 		windowWidth = width / 75;
 		windowHeight = height / 5;
-		windowSeparation= 0; // It is either set by the user using the setter or set to default calculation
-		
-		leftMainDoor = new Door(mainDoorWidth, mainDoorHeight, (int) (width / 37.5), (int) (height / 5));
-		rightMainDoor = new Door(mainDoorWidth, mainDoorHeight, (int) (width / 37.5), (int) (height / 5));
-		leftEmergencyDoor = new Door(emergencyDoorWidth, emergencyDoorHeight, (int) (width / 75),
-				(int) (height / 11.67));
-		rightEmergencyDoor = new Door(emergencyDoorWidth, emergencyDoorHeight, (int) (width / 75),
-				(int) (height / 11.67));
+		windowSeparation = (int) Math
+				.ceil((windowWidth + (pWindowArea - (numWindows * windowWidth)) / numWindows * 1.5));
 
 		for (int i = 0; i < numWindows; i++) {
-			pWindow = new PassengerWindow(windowWidth, windowHeight, (int) (width / 93.75), (int) (height / 8.75));
+			windowStartPos = (int) (left + width / 4.704);
+			pWindow = new PassengerWindow(windowWidth, windowHeight, (int) (height / 8.75), (int) (height / 8.75),
+					windowStartPos + (i * windowSeparation), (int) (top + height / 2.0125));
 			passengerWindow.add(pWindow);
 		}
-
 	}
 
 	public int getWidth() {
@@ -101,37 +119,7 @@ public class Fuselage {
 	public void setColor(Color color) {
 		this.color = color;
 	}
-	
-	
-	public int getWindowSeparation() {
-		return windowSeparation;
-	}
 
-	public void setWindowSeparation(int windowSeparation) {
-		this.windowSeparation = windowSeparation;
-	}
-
-	public double getRelativeWidthScaling(int fuselageWidth) {
-		int ogTestingWidth = 375;
-		return fuselageWidth/ogTestingWidth  ;
-	}
-
-	public double getRelativeHeightScaling(int fuselageHeight) {
-		int ogTestingHeight = 35;
-		return  fuselageHeight / ogTestingHeight;
-	}
-	
-	public int calculateWindowSeparation(double scaleFactor) {
-		int ogTestSeparation = 3;
-		int num= 0;
-		if (scaleFactor == 1) {
-			return 3;
-		}else if(scaleFactor % 0.5==0) { //Multiple of 0.5
-			num+=1;
-		}
-		return 0;
-		
-	}
 	public void drawAt(int left, int top) {
 
 		Path2D.Double fuselage = new Path2D.Double();
@@ -173,24 +161,18 @@ public class Fuselage {
 		Drawing.pen().setColor(Color.black);
 
 		// Doors
-		mainDoorsY = (int) (top + height / 3.228);
-		emergencyDoorsY = (int) (top + height / 2.098);
-		leftMainDoor.drawAt((int) (left + width / 5.69), mainDoorsY); // Backdoor
-		rightMainDoor.drawAt((int) (left + width / 1.043), mainDoorsY);
-		leftEmergencyDoor.drawAt((int) (left + width / 1.823), emergencyDoorsY);// Leftmost emergencydoor
-		rightEmergencyDoor.drawAt((int) (left + width / 1.752), emergencyDoorsY);
+		leftMainDoor.draw();// Backdoor
+		rightMainDoor.draw();
+		leftEmergencyDoor.draw();// Leftmost emergencydoor
+		rightEmergencyDoor.draw();
 
 		// Windows
-		windowsY = (int) (top + height / 2.0125);
-		windowStartPos = (int) (left + width / 4.704);
-		if (windowSeparation == 0) {
-			windowSeparation= (windowWidth+(int)(width/95));
-		}
-		
 		for (int i = 0; i < numWindows; i++) {
-			passengerWindow.get(i).drawAt(windowStartPos+(i*windowSeparation),windowsY);
-
-//			passengerWindow.get(i).drawAt(windowStartPos + (i * (windowWidth + (int) (6))), windowsY);
+			if (!(passengerWindow.get(i).intersects(rightMainDoor))) {
+				passengerWindow.get(i).draw();
+			}else {
+				break;
+			}
 		}
 
 		// Flaps for gears

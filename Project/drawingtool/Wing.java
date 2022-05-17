@@ -2,7 +2,7 @@ package drawingtool;
 
 public class Wing {
 	private int width,height;
-	private Engine engine;
+	private Engine engine; //Composite
 	
 	
 	public Wing() {
