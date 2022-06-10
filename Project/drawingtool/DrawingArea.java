@@ -16,7 +16,7 @@ import javax.swing.JPanel;
 public class DrawingArea extends JPanel {
 	private static final long serialVersionUID = 1L;
 	
-	private Airport airport = null;
+	private Airport airport= new Airport();
 	
 	protected void paintComponent(Graphics g) {
 		Graphics2D pen = (Graphics2D) g;
@@ -29,12 +29,14 @@ public class DrawingArea extends JPanel {
 		RenderingHints.VALUE_ANTIALIAS_ON);
 		pen.setRenderingHints(rh);
 
-		if(airport!=null) {
-			airport.draw();
-		} else {
-			airport= new Airport();
-			airport.draw();
-		}
-		
+		airport.draw();
+	}
+
+	public Airport getAirport() {
+		return airport;
+	}
+	
+	public void setAirport() {
+		airport = new Airport();
 	}
 } 

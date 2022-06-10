@@ -23,4 +23,6 @@ public class Door extends RoundRectangularObject implements LocatedRectangle {
 	public int height() {
 		return getHeight();
 	}
+	
+	
 }

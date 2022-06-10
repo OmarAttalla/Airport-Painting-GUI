@@ -12,7 +12,7 @@ public class TerminalBuilding implements OutlineObject {
 	
 	public TerminalBuilding(Color color) {
 		terminalWindow = new TerminalWindow(Color.decode("#032543"));
-		domeWindow = new DomeWindow(Color.decode("#032543"));
+		domeWindow = new DomeWindow(Color.decode("#053d6e"));
 		this.color = color;
 	}
 
@@ -34,6 +34,10 @@ public class TerminalBuilding implements OutlineObject {
 		outlineRec((int)(screenSize.width*0.03), (int)(screenSize.height*0.58), 
 				terminalBuildingWidth, terminalBuildingHeight,color);
 		terminalWindow.draw();
+		
+		//Right Part of the terminal
+		outlineRec((int)(screenSize.width*0.6), (int)(screenSize.height*0.615), 
+				terminalBuildingWidth, (int) (terminalBuildingHeight*0.8),color);
 		
 		//Dome
 		outlineArc((int)(screenSize.width*0.3), (int)(screenSize.height*0.5), terminalDomeWidth, terminalDomeHeight, 0,180,color );

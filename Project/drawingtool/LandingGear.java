@@ -1,22 +1,30 @@
 package drawingtool;
 
-public class LandingGear {
+import java.awt.Color;
+
+public class LandingGear implements OutlineObject {
 	private int diameter;
 	
 	public LandingGear(int diameter) {
 		this.diameter = diameter;
 	}
 	
-	public LandingGear() {
-		
-	}
-
 	public void drawAt(int left, int top) {
 		//Tire
-		Drawing.pen().fillOval(left, top, diameter, diameter);
+		outlineOval(left, top, diameter, diameter,Color.black);
 		//Rim
-		Drawing.pen().fillOval(left, top, diameter/2, diameter/2);
+		outlineOval(left+diameter/4, top+diameter/4, diameter/2, diameter/2,Color.gray);
 		//Hub
-		Drawing.pen().fillOval(left, top, diameter/5, diameter/5);
+		outlineOval((int)(left+diameter/2.5), (int)(top+diameter/2.5), diameter/5, diameter/5,Color.black);
 	}
+
+	public int getDiameter() {
+		return diameter;
+	}
+
+	public void setDiameter(int diameter) {
+		this.diameter = diameter;
+	}
+	
+	
 }

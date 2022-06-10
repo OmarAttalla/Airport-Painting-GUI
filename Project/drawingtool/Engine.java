@@ -34,15 +34,15 @@ public class Engine {
 		int scaling = 2;
 		
 		//For bottom curve
-		Point relativeZero = new Point(100,50);
-		Point firstBezierPoint = getBezier(new Point(96,49), relativeZero, scaling);
-		Point secondBezierPoint = getBezier(new Point(90,49), relativeZero, scaling);
-		Point endPoint = getBezier(new Point(80,51), relativeZero, scaling);
+		Point relativeZero = new Point((int) (width/0.5),(int) (height/0.3));
+		Point firstBezierPoint = getBezier(new Point((int)(width/0.521), (int)(height/0.306)), relativeZero, scaling);
+		Point secondBezierPoint = getBezier(new Point((int)(width/0.556),(int)(height/0.306)), relativeZero, scaling);
+		Point endPoint = getBezier(new Point((int)(width/0.625),(int)(height/0.294)), relativeZero, scaling);
 		
 		//For top curve
-		Point relativeZeroT = new Point(80,66);
-		Point firstBezierPointT = getBezier(new Point(90,64), relativeZeroT, scaling);
-		Point secondBezierPointT = getBezier(new Point(96,64), relativeZeroT, scaling);
+		Point relativeZeroT = new Point((int) (width/0.625),(int)(height/0.227));
+		Point firstBezierPointT = getBezier(new Point((int)(width/0.556),(int)(height/0.234)), relativeZeroT, scaling);
+		Point secondBezierPointT = getBezier(new Point((int)(width/0.521),(int)(height/0.234)), relativeZeroT, scaling);
 		
 		Path2D.Double engine = new Path2D.Double();
 		engine.moveTo(left, top);
