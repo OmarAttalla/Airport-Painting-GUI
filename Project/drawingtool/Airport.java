@@ -110,41 +110,40 @@ public class Airport {
 		}
 	}
 	
-		public void colorPlanes() {
-			int colorNum;
-			Color newColor = null;
-			Color wingColor = null;
-			
-			for(int i =0; i< planes.size(); i++) {
-				colorNum = RandomNumber.between(1,5);
-				
-				switch(colorNum) {
-				case(1):
-					newColor = Color.decode("#EF767A");
-					wingColor = Color.decode("#C0161C");
-					break;
-				case(2):
-					newColor = Color.decode("#456990");
+	public void colorPlanes() {
+		int colorNum;
+		Color newColor = null;
+		Color wingColor = null;
+
+		for (int i = 0; i < planes.size(); i++) {
+			colorNum = RandomNumber.between(1, 5);
+
+			switch (colorNum) {
+			case (1):
+				newColor = Color.decode("#EF767A");
+				wingColor = Color.decode("#C0161C");
+				break;
+			case (2):
+				newColor = Color.decode("#456990");
 				wingColor = Color.decode("#2A4057");
-					break;
-				case(3):
-					newColor = Color.decode("#49BEAA");
+				break;
+			case (3):
+				newColor = Color.decode("#49BEAA");
 				wingColor = Color.decode("#2A7568");
-					break;
-				case(4):
-					newColor = Color.decode("#49DCB1");
+				break;
+			case (4):
+				newColor = Color.decode("#49DCB1");
 				wingColor = Color.decode("#1C936F");
-					break;
-				case(5):
-					newColor = Color.decode("#EEB868");
+				break;
+			case (5):
+				newColor = Color.decode("#EEB868");
 				wingColor = Color.decode("#B97715");
-					break;
-				}
-				
-				planes.get(i).getFuselage().setColor(newColor);
-				planes.get(i).getWing().setColor(wingColor);
+				break;
 			}
 
+			planes.get(i).getFuselage().setColor(newColor);
+			planes.get(i).getWing().setColor(wingColor);
+		}
 		
 		
 	}

@@ -81,7 +81,8 @@ public class Plane implements LocatedRectangle {
 		wing.drawAt((address.x + (int) (fuselage.getWidth() / 2)), (int) (address.y + fuselage.getHeight() / 1.1));
 		frontGear.drawAt((address.x + (int) (fuselage.getWidth()* 0.93)),(int) (address.y + fuselage.getHeight() * 1.5));
 		backGear.drawAt((address.x + (int) (fuselage.getWidth()* 0.5)),(int) (address.y + fuselage.getHeight() * 1.5));
-//		System.out.println("new plane "+ width);
+//For dubugging purposes
+//		System.out.println("new plane "+ width); 
 //		System.out.println(height);
 	}
 
