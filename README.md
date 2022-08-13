@@ -1,4 +1,4 @@
-This project was made in the scopr of my Software construction 2 course at HAW hamburg.
+This project was made in the scope of my Software construction 2 course at HAW hamburg.
 
 Purpose: It served as an introduction into Java, UML diagrams and OOP as well as GUI related topics such as Action listeners as well as Page and element formatting types as a few examples. Design patterns where also Introduced in this project wih a focus on the state machine design pattern
 
